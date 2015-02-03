@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Truelab\KottiMultilanguageBundle\Entity\LanguageRoot"
+            table="language_roots">
+
+        <discriminator-map>
+            <discriminator-mapping value="language_root" class="LanguageRoot"/>
+        </discriminator-map>
+
+        <!-- associations -->
+        <one-to-one field="document" target-entity="Truelab\KottiORMBundle\Entity\Document">
+            <join-column name="id" referenced-column-name="id" />
+        </one-to-one>
+    </entity>
+
+</doctrine-mapping>
