@@ -6,14 +6,8 @@
     <entity name="Truelab\KottiMultilanguageBundle\Entity\LanguageRoot"
             table="language_roots">
 
-        <discriminator-map>
-            <discriminator-mapping value="language_root" class="LanguageRoot"/>
-        </discriminator-map>
-
         <!-- associations -->
-        <one-to-one field="document" target-entity="Truelab\KottiORMBundle\Entity\Document">
-            <join-column name="id" referenced-column-name="id" />
-        </one-to-one>
-    </entity>
+        <one-to-one field="document" target-entity="Truelab\KottiORMBundle\Entity\Document" />
 
+    </entity>
 </doctrine-mapping>
