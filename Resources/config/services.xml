@@ -4,13 +4,36 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+
     <services>
-        <service id="truelab_kotti_multilanguage.example" class="Truelab\KottiMultilanguageBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+
+        <service id="truelab_kotti_multilanguage.translation_repository"
+                 class="Truelab\KottiMultilanguageBundle\Repository\TranslationRepository"
+            parent="truelab_kotti_model.abstract_repository">
+        </service>
+
+        <service id="truelab_kotti_multilanguage.util.language"
+            class="Truelab\KottiMultilanguageBundle\Util\Language">
+            <argument>%locale%</argument>
+            <argument>%available_locales%</argument>
+            <argument type="service" id="truelab_kotti_multilanguage.translation_repository" />
+            <argument type="service" id="session" />
+        </service>
+
+        <service id="truelab_kotti_multilanguage.listener.language"
+             class="Truelab\KottiMultilanguageBundle\Listener\LanguageListener">
+             <argument>%locale%</argument>
+             <call method="setCurrentContext">
+                 <argument type="service" id="truelab_kotti_frontend.services.current_context" />
+             </call>
+             <call method="setLanguage">
+                 <argument type="service" id="truelab_kotti_multilanguage.util.language" />
+             </call>
+             <call method="setTwig">
+                 <argument type="service" id="twig" />
+             </call>
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10" />
         </service>
     </services>
-    -->
+
 </container>
