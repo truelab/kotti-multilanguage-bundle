@@ -8,6 +8,7 @@ use Truelab\KottiMultilanguageBundle\Repository\TranslationRepositoryInterface;
 /**
  * Class TranslationRepositoryFunctionalTest
  * @package Truelab\KottiMultilanguageBundle\Tests\Repository
+ * @group functional
  */
 class TranslationRepositoryFunctionalTest extends WebTestCase
 {

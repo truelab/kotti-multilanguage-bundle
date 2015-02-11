@@ -7,11 +7,13 @@
 
     <services>
 
+        <!-- TRANSLATION REPOSITORY -->
         <service id="truelab_kotti_multilanguage.translation_repository"
                  class="Truelab\KottiMultilanguageBundle\Repository\TranslationRepository"
             parent="truelab_kotti_model.abstract_repository">
         </service>
 
+        <!-- LANGUAGE UTIL SERVICE -->
         <service id="truelab_kotti_multilanguage.util.language"
             class="Truelab\KottiMultilanguageBundle\Util\Language">
             <argument>%locale%</argument>
@@ -20,6 +22,7 @@
             <argument type="service" id="session" />
         </service>
 
+        <!-- LANGUAGE LISTENER -->
         <service id="truelab_kotti_multilanguage.listener.language"
              class="Truelab\KottiMultilanguageBundle\Listener\LanguageListener">
              <argument>%locale%</argument>
@@ -34,6 +37,10 @@
              </call>
             <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10" />
         </service>
-    </services>
 
+        <!-- NAVIGATION ROOT CHOOSER -->
+        <service id="truelab_kotti_multilanguage.navigation_root_chooser"
+            class="Truelab\KottiMultilanguageBundle\Services\NavigationRootChooser"/>
+
+    </services>
 </container>
