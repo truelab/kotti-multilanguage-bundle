@@ -34,7 +34,7 @@ class Language
     {
         $this->locale = $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
         $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ? $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath());
-        $this->languageRoot = $this->repository->findByPath($this->getCurrentLanguageRootPath());
+        $this->languageRoot    = $this->repository->findByPath($this->getCurrentLanguageRootPath());
         $this->translationsMap = $this->repository->getTranslationsMap($context);
 
         // set locale for this session
@@ -95,7 +95,7 @@ class Language
 
     public function getCurrentLanguageRootPath()
     {
-        return self::buildLocalePath($this->getDefaultLocale());
+        return self::buildLocalePath($this->getLocale());
     }
 
     public function getDefaultLanguageRootPath()
