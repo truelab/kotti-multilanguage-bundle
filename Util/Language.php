@@ -83,6 +83,18 @@ class Language
         return $this->translationsMap;
     }
 
+    public function getTranslatedContext(LanguageRoot $languageRoot)
+    {
+        $translationsMap = $this->getTranslationsMap();
+        $language = $languageRoot->getLanguage();
+
+        if(isset($translationsMap[$language])) {
+            return $translationsMap[$language];
+        }else{
+            return $languageRoot;
+        }
+    }
+
     public function getCurrentLanguageRoot()
     {
         return $this->languageRoot;
