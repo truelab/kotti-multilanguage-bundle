@@ -14,6 +14,7 @@ class Language
 {
     protected $locale;
     protected $languageRoot;
+    protected $defaultLanguageRoot;
     protected $defaultLocale;
     protected $repository;
     protected $translationsMap = [];
@@ -30,6 +31,7 @@ class Language
     public function setLocale(ContentInterface $context)
     {
         $this->locale = $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
+        $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ? $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath());
         $this->languageRoot = $this->repository->findByPath($this->getCurrentLanguageRootPath());
         $this->translationsMap = $this->repository->getTranslationsMap($context);
 
@@ -60,6 +62,11 @@ class Language
     public function getCurrentLanguageRoot()
     {
         return $this->languageRoot;
+    }
+
+    public function getDefaultLanguageRoot()
+    {
+        return $this->defaultLanguageRoot;
     }
 
     public function getCurrentLanguageRootPath()
