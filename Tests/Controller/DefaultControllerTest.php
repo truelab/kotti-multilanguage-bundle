@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 /**
  * Class DefaultControllerTest
  * @package Truelab\KottiMultilanguageBundle\Tests\Controller
+ * @group functional
  */
 class DefaultControllerTest extends WebTestCase
 {
