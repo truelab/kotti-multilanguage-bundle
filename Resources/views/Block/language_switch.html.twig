@@ -1,11 +1,12 @@
 {% if language is defined %}
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right navbar-language-switch">
         {% for language_root in language.availableLanguageRoots %}
             {% set path = kotti_path(language.translatedContext(language_root)) %}
             <li class="{{ language_root.language == context.language ? 'active' : '' }}">
                 <a href="{{ path }}">
                     {{ language_root.title }}
                 </a>
+                <span class="vertical-divider"></span>
             </li>
         {% endfor %}
     </ul>
