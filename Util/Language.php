@@ -95,6 +95,9 @@ class Language
         }
     }
 
+    /**
+     * @return LanguageRoot|null
+     */
     public function getCurrentLanguageRoot()
     {
         return $this->languageRoot;
