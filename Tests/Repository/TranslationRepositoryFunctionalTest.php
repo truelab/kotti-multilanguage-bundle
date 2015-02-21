@@ -28,8 +28,10 @@ class TranslationRepositoryFunctionalTest extends WebTestCase
     public function testGetTranslationsMap()
     {
         $sourceNode = $this->repository->findOne(Document::getClass(), array(
-            'nodes.path = ?' => '/en/mip/'
+            'nodes.path = ?' => '/en/about/'
         ));
+
+        $this->assertInstanceOf(Document::getClass(), $sourceNode);
 
         $map = $this->repository->getTranslationsMap($sourceNode);
 
@@ -40,7 +42,7 @@ class TranslationRepositoryFunctionalTest extends WebTestCase
         $this->assertInstanceOf(Document::getClass(), $map['it']);
 
         $targetNode = $this->repository->findOne(Document::getClass(), array(
-            'nodes.path = ?' => '/it/mip/'
+            'nodes.path = ?' => '/it/about/'
         ));
 
         $map = $this->repository->getTranslationsMap($targetNode);
