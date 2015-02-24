@@ -2,14 +2,14 @@
 
 namespace Truelab\KottiMultilanguageBundle\Repository;
 use Truelab\KottiModelBundle\Model\ContentInterface;
-use Truelab\KottiModelBundle\Repository\Repository;
+use Truelab\KottiModelBundle\Repository\AliasRepository;
 use Truelab\KottiModelBundle\Model\NodeInterface;
 
 /**
  * Class TranslationRepository
  * @package Truelab\KottiMultilanguageBundle\Repository
  */
-class TranslationRepository extends Repository implements TranslationRepositoryInterface
+class TranslationRepository extends AliasRepository implements TranslationRepositoryInterface
 {
     public function getTranslationsMap(ContentInterface $source)
     {
