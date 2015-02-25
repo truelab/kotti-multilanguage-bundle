@@ -28,7 +28,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('available_locales')
                     ->isRequired()
                     ->requiresAtLeastOneElement()
-                    ->prototype('scalar')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('independent_fields')
+                    ->useAttributeAsKey('name')
+                    ->treatNullLike([])
+                    ->treatFalseLike([])
+                    ->prototype('array')->prototype('scalar')->end()
                 ->end()
             ->end();
 

@@ -20,6 +20,13 @@
             <argument>%truelab_kotti_multilanguage.available_locales%</argument>
             <argument type="service" id="truelab_kotti_multilanguage.translation_repository" />
             <argument type="service" id="session" />
+            <argument type="service" id="truelab_kotti_multilanguage.util.language_independent_fields" />
+        </service>
+
+        <!-- LANGUAGE UTIL INDEPENDENT FIELDS SERVICE -->
+        <service id="truelab_kotti_multilanguage.util.language_independent_fields"
+                 class="Truelab\KottiMultilanguageBundle\Util\LanguageIndependentFields">
+            <argument>%truelab_kotti_multilanguage.independent_fields%</argument>
         </service>
 
         <!-- LANGUAGE LISTENER -->

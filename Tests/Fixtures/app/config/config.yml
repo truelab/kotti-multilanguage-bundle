@@ -46,6 +46,8 @@ truelab_kotti_model:
 truelab_kotti_multilanguage:
     locale: it
     available_locales: ["it","en"]
-
-
-
+#    independent_fields: FIXME not tested
+#        document:
+#            - body
+#        file:
+#            - data

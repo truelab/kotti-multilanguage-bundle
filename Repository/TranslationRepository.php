@@ -1,6 +1,7 @@
 <?php
 
 namespace Truelab\KottiMultilanguageBundle\Repository;
+use Symfony\Cmf\Bundle\RoutingBundle\Tests\Resources\Document\Content;
 use Truelab\KottiModelBundle\Model\ContentInterface;
 use Truelab\KottiModelBundle\Repository\AliasRepository;
 use Truelab\KottiModelBundle\Model\NodeInterface;
@@ -26,8 +27,6 @@ class TranslationRepository extends AliasRepository implements TranslationReposi
 
 
         $raw = $this->connection->executeQuery($sql)->fetchAll();
-
-
 
         if(!empty($raw)) {
             foreach($raw as $record) {
@@ -64,6 +63,44 @@ class TranslationRepository extends AliasRepository implements TranslationReposi
         $map[$source->getLanguage()] = $source;
 
         return $map;
+    }
+
+    /**
+     * Given a translation target, this returns the translation source
+     * or Null.
+     *
+     * @param ContentInterface $content
+     *
+     * @return ContentInterface|null
+     */
+    public function getSource(ContentInterface $content)
+    {
+        $qb = $this->connection
+            ->createQueryBuilder();
+
+        $sql = $qb->select('*')
+            ->from('translations', 't')
+            ->where('t.target_id = ' . $content->getId())
+            ->getSQL();
+
+
+        $raw = $this->connection->executeQuery($sql)->fetchAll();
+
+        if(!empty($raw)) {
+            $result = $raw[0];
+        }else{
+            return null;
+        }
+
+        $node = $this->findOne(null, array(
+            'nodes.id = ?' => $result['source_id']
+        ));
+
+        if($node instanceof NodeInterface) {
+            return $node;
+        }else{
+            return null;
+        }
     }
 
     /**

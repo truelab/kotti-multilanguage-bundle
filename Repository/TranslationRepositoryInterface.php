@@ -17,4 +17,11 @@ interface TranslationRepositoryInterface extends RepositoryInterface
      * @return array
      */
     public function getTranslationsMap(ContentInterface $source);
+
+    /**
+     * @param $content
+     *
+     * @return mixed
+     */
+    public function getSource(ContentInterface $content);
 }

@@ -22,20 +22,30 @@ class Language
     protected $translationsMap = [];
     protected $availableLocales;
 
-    public function __construct($defaultLocale, $availableLocales, TranslationRepositoryInterface $repository, Session $session)
+    /**
+     * @var LanguageIndependentFields
+     */
+    protected $languageIndependentFields;
+
+    public function __construct($defaultLocale, $availableLocales,
+                                TranslationRepositoryInterface $repository,
+                                Session $session, LanguageIndependentFields $languageIndependentFields = null)
     {
         $this->defaultLocale = $defaultLocale;
         $this->repository = $repository;
         $this->availableLocales = $availableLocales;
         $this->session = $session;
+        $this->languageIndependentFields = $languageIndependentFields;
     }
+
 
     public function setLocale(ContentInterface $context)
     {
-        $this->locale = $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
-        $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ? $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath());
-        $this->languageRoot    = $this->repository->findByPath($this->getCurrentLanguageRootPath());
-        $this->translationsMap = $this->repository->getTranslationsMap($context);
+        $this->locale              = $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
+        $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ?
+            $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath()); // HARD TO TEST WRONG!
+        $this->languageRoot        = $this->repository->findByPath($this->getCurrentLanguageRootPath());
+        $this->translationsMap     = $this->repository->getTranslationsMap($context);
 
         // set locale for this session
         $this->session->set('_locale', $this->getLocale());
@@ -83,6 +93,7 @@ class Language
         return $this->translationsMap;
     }
 
+
     public function getTranslatedContext(LanguageRoot $languageRoot)
     {
         $translationsMap = $this->getTranslationsMap();
@@ -93,6 +104,32 @@ class Language
         }else{
             return $languageRoot;
         }
+    }
+
+    public function getSource($content)
+    {
+        return $this->repository->getSource($content);
+    }
+
+    public function setIndependentFields($content)
+    {
+        $source = $this->getSource($content);
+
+        if($source && $this->hasIndependentFields($content)) {
+            foreach($this->getIndependentFields($content) as $indieField) {
+                $content[$indieField] = $source[$indieField];
+            }
+        }
+    }
+
+    public function hasIndependentFields($content)
+    {
+        return $this->languageIndependentFields->hasFields($content);
+    }
+
+    public function getIndependentFields($content)
+    {
+        return $this->languageIndependentFields->getFields($content);
     }
 
     /**
