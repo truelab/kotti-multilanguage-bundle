@@ -1260,7 +1260,7 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/truelab/kotti-model-bundle.git",
-                "reference": "939c996102df303410b8dfa13cf4d365254d31f5"
+                "reference": "ee4803c302d87e7e39bc39503e1b71961068849e"
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.3",
@@ -1290,7 +1290,7 @@
                     "email": "ruben.barilani.dev@gmail.com"
                 }
             ],
-            "time": "2015-02-25 12:13:39"
+            "time": "2015-02-25 14:39:08"
         },
         {
             "name": "twig/twig",

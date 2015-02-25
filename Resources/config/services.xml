@@ -23,10 +23,17 @@
             <argument type="service" id="truelab_kotti_multilanguage.util.language_independent_fields" />
         </service>
 
-        <!-- LANGUAGE UTIL INDEPENDENT FIELDS SERVICE -->
+        <!-- LANGUAGE INDEPENDENT FIELDS SERVICE -->
         <service id="truelab_kotti_multilanguage.util.language_independent_fields"
                  class="Truelab\KottiMultilanguageBundle\Util\LanguageIndependentFields">
             <argument>%truelab_kotti_multilanguage.independent_fields%</argument>
+        </service>
+
+        <!-- LANGUAGE INDEPENDENT FIELDS POST LOADER -->
+        <service id="truelab_kotti_multilanguage.util.language_independent_fields_post_loader"
+                 class="Truelab\KottiMultilanguageBundle\Util\LanguageIndependentFieldsPostLoader">
+            <argument type="service" id="truelab_kotti_multilanguage.util.language" />
+            <tag name="truelab_kotti_model.post_loader" />
         </service>
 
         <!-- LANGUAGE LISTENER -->

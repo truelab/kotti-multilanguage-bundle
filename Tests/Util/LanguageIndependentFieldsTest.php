@@ -10,7 +10,8 @@ use Truelab\KottiMultilanguageBundle\Util\LanguageIndependentFields;
  * @package Truelab\KottiMultilanguageBundle\Tests\Util
  * @group functional
  *
- * FIXME THIS TEST FAIL!
+ * FIXME THIS TEST FAIL! NOT EXISTENT SERVICE, WEIRD!
+ * .. excludes declaring class abstract ..
  */
 abstract class LanguageIndependentFieldsTest extends WebTestCase
 {
