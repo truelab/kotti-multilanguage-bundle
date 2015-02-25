@@ -42,6 +42,10 @@ truelab_kotti_model:
     types:
         language_root: Truelab\KottiMultilanguageBundle\Model\LanguageRoot
 
+# Kotti multilanguage
+truelab_kotti_multilanguage:
+    locale: it
+    available_locales: ["it","en"]
 
 
 

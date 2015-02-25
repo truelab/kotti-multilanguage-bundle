@@ -22,6 +22,9 @@ class TruelabKottiMultilanguageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter($this->getAlias() . '.locale', $config['locale']);
+        $container->setParameter($this->getAlias() . '.available_locales', $config['available_locales']);
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }

@@ -16,8 +16,8 @@
         <!-- LANGUAGE UTIL SERVICE -->
         <service id="truelab_kotti_multilanguage.util.language"
             class="Truelab\KottiMultilanguageBundle\Util\Language">
-            <argument>%locale%</argument>
-            <argument>%available_locales%</argument>
+            <argument>%truelab_kotti_multilanguage.locale%</argument>
+            <argument>%truelab_kotti_multilanguage.available_locales%</argument>
             <argument type="service" id="truelab_kotti_multilanguage.translation_repository" />
             <argument type="service" id="session" />
         </service>
@@ -25,7 +25,7 @@
         <!-- LANGUAGE LISTENER -->
         <service id="truelab_kotti_multilanguage.listener.language"
              class="Truelab\KottiMultilanguageBundle\Listener\LanguageListener">
-             <argument>%locale%</argument>
+             <argument>%truelab_kotti_multilanguage.locale%</argument>
              <call method="setCurrentContext">
                  <argument type="service" id="truelab_kotti_frontend.services.current_context" />
              </call>
