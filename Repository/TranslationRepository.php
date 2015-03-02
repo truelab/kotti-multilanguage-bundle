@@ -33,7 +33,7 @@ class TranslationRepository extends AliasRepository implements TranslationReposi
                 $node = $this->findOne(null, array(
                     'nodes.id = ?' => $record['target_id']
                 ));
-                if($node) {
+                if($node && $node->getLanguage()) {
                     $map[$node->getLanguage()] = $node;
                 }
             }
@@ -41,6 +41,7 @@ class TranslationRepository extends AliasRepository implements TranslationReposi
 
         // sourceNode is not the source but probably a target
         if(empty($raw)) {
+
             $qb = $this->connection
                 ->createQueryBuilder();
             $sql = $qb->select('*')
@@ -54,13 +55,15 @@ class TranslationRepository extends AliasRepository implements TranslationReposi
                 $node = $this->findOne(null, array(
                     'nodes.id = ?' => $record['source_id']
                 ));
-                if($node) {
+                if($node && $node->getLanguage()) {
                     $map[$node->getLanguage()] = $node;
                 }
             }
         }
 
-        $map[$source->getLanguage()] = $source;
+        if($source->getLanguage()) {
+            $map[$source->getLanguage()] = $source;
+        }
 
         return $map;
     }

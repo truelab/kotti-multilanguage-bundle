@@ -32,7 +32,7 @@
         <!-- LANGUAGE INDEPENDENT FIELDS POST LOADER -->
         <service id="truelab_kotti_multilanguage.util.language_independent_fields_post_loader"
                  class="Truelab\KottiMultilanguageBundle\Util\LanguageIndependentFieldsPostLoader">
-            <argument type="service" id="truelab_kotti_multilanguage.util.language" />
+            <argument type="service" id="service_container" />
             <tag name="truelab_kotti_model.post_loader" />
         </service>
 

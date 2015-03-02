@@ -1,6 +1,7 @@
 <?php
 
 namespace Truelab\KottiMultilanguageBundle\Util;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Truelab\KottiModelBundle\Util\PostLoaderInterface;
 
 /**
@@ -10,24 +11,41 @@ use Truelab\KottiModelBundle\Util\PostLoaderInterface;
 class LanguageIndependentFieldsPostLoader implements PostLoaderInterface
 {
     /**
-     * @var Language
+     * @var ContainerInterface
      */
-    private $language;
+    private $container;
 
-    public function __construct(Language $language)
+    /**
+     * FIXME - avoid circular dependencies injecting the container
+     * the problem is the model factory is used by the repository
+     * and here i tried to inject @see Language that dependes on repository too.
+     *
+     * Model design is bad!
+     *
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container)
     {
-        $this->language = $language;
+        $this->container = $container;
     }
 
     public function support($content)
     {
-        return $this->language->hasIndependentFields($content);
+        return $this->getLanguage()->hasIndependentFields($content);
     }
 
     public function onPostLoad($content)
     {
-        if($this->language->hasIndependentFields($content)) {
-            $this->language->setIndependentFields($content);
+        if($this->getLanguage()->hasIndependentFields($content)) {
+            $this->getLanguage()->setIndependentFields($content);
         }
+    }
+
+    /**
+     * @return Language
+     */
+    protected function getLanguage()
+    {
+        return $this->container->get('truelab_kotti_multilanguage.util.language');
     }
 }
