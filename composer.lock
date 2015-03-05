@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9a5a7b9cb739e1c8dc0323e8d7a32d64",
+    "hash": "0b906999a2d28ee01624958b0a41e8f3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -363,16 +363,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "3beb3a780485ab01f86941f4892cd23ef8c39c6b"
+                "reference": "1986ff3a945b584c6505d07eae92d77e41131078"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/3beb3a780485ab01f86941f4892cd23ef8c39c6b",
-                "reference": "3beb3a780485ab01f86941f4892cd23ef8c39c6b",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/1986ff3a945b584c6505d07eae92d77e41131078",
+                "reference": "1986ff3a945b584c6505d07eae92d77e41131078",
                 "shasum": ""
             },
             "require": {
@@ -381,17 +381,15 @@
                 "jdorn/sql-formatter": "~1.1",
                 "php": ">=5.3.2",
                 "symfony/doctrine-bridge": "~2.2",
-                "symfony/framework-bundle": "~2.2"
+                "symfony/framework-bundle": "~2.3"
             },
             "require-dev": {
                 "doctrine/orm": "~2.3",
-                "phpunit/php-code-coverage": "~1.2",
-                "phpunit/phpunit": "~3.7",
-                "phpunit/phpunit-mock-objects": "~1.2",
+                "phpunit/phpunit": "~4",
                 "satooshi/php-coveralls": "~0.6.1",
                 "symfony/validator": "~2.2",
                 "symfony/yaml": "~2.2",
-                "twig/twig": "~1"
+                "twig/twig": "~1.10"
             },
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
@@ -400,7 +398,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -438,7 +436,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2014-11-28 08:32:03"
+            "time": "2015-02-28 11:04:45"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -768,6 +766,43 @@
                 "minification"
             ],
             "time": "2014-12-12 05:04:05"
+        },
+        {
+            "name": "nicmart/tree",
+            "version": "v0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicmart/Tree.git",
+                "reference": "982bf9518dd7a407f8141cc334fc1e544aea2dea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nicmart/Tree/zipball/982bf9518dd7a407f8141cc334fc1e544aea2dea",
+                "reference": "982bf9518dd7a407f8141cc334fc1e544aea2dea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Tree": "src/",
+                    "Tree\\Test": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolò Martini",
+                    "email": "nicmartnic@gmail.com"
+                }
+            ],
+            "description": "A basic but flexible php tree data structure and a fluent tree builder implementation.",
+            "time": "2015-02-10 19:14:00"
         },
         {
             "name": "psr/log",
@@ -1213,10 +1248,11 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/truelab/kotti-frontend-bundle.git",
-                "reference": "0991e429e3a17aef1868988bddc55af7100c6e9a"
+                "url": "https://github.com/truelab/kotti-frontend-bundle.git",
+                "reference": "91287692a902ca3388f9f2551bdb6daee472796f"
             },
             "require": {
+                "nicmart/tree": "0.2.*",
                 "php": ">=5.4.0",
                 "sensio/framework-extra-bundle": "~3.0",
                 "sunra/php-simple-html-dom-parser": "~1.5",
@@ -1252,15 +1288,15 @@
                 }
             ],
             "description": "A symfony2 bundle that provides frontend helpers and logic to show Kotti contents.",
-            "time": "2015-02-24 16:34:09"
+            "time": "2015-03-05 22:33:25"
         },
         {
             "name": "truelab/kotti-model-bundle",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/truelab/kotti-model-bundle.git",
-                "reference": "ee4803c302d87e7e39bc39503e1b71961068849e"
+                "url": "https://github.com/truelab/kotti-model-bundle.git",
+                "reference": "aac4523cc83fa891f940dd7a5d6d31673d512118"
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.3",
@@ -1290,7 +1326,7 @@
                     "email": "ruben.barilani.dev@gmail.com"
                 }
             ],
-            "time": "2015-02-25 14:39:08"
+            "time": "2015-03-05 22:27:22"
         },
         {
             "name": "twig/twig",
