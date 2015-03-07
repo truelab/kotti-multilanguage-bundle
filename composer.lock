@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b906999a2d28ee01624958b0a41e8f3",
+    "hash": "d46d365e85c5dcc1b0023059e5acbe61",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1245,11 +1245,11 @@
         },
         {
             "name": "truelab/kotti-frontend-bundle",
-            "version": "dev-master",
+            "version": "1.0.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/truelab/kotti-frontend-bundle.git",
-                "reference": "91287692a902ca3388f9f2551bdb6daee472796f"
+                "reference": "f6d33a888495a78dc09a969f9a1fdaec88265158"
             },
             "require": {
                 "nicmart/tree": "0.2.*",
@@ -1258,7 +1258,7 @@
                 "sunra/php-simple-html-dom-parser": "~1.5",
                 "symfony-cmf/routing-bundle": "~1.3",
                 "symfony/assetic-bundle": "~2.3",
-                "truelab/kotti-model-bundle": "dev-master"
+                "truelab/kotti-model-bundle": "1.0.0-alpha"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.4",
@@ -1288,15 +1288,15 @@
                 }
             ],
             "description": "A symfony2 bundle that provides frontend helpers and logic to show Kotti contents.",
-            "time": "2015-03-05 22:33:25"
+            "time": "2015-03-07 01:23:06"
         },
         {
             "name": "truelab/kotti-model-bundle",
-            "version": "dev-master",
+            "version": "1.0.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/truelab/kotti-model-bundle.git",
-                "reference": "aac4523cc83fa891f940dd7a5d6d31673d512118"
+                "reference": "d755b7a76252d066987ce3e17fa030b635e82230"
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.3",
@@ -1326,7 +1326,7 @@
                     "email": "ruben.barilani.dev@gmail.com"
                 }
             ],
-            "time": "2015-03-05 22:27:22"
+            "time": "2015-03-05 22:18:37"
         },
         {
             "name": "twig/twig",
@@ -2295,8 +2295,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "truelab/kotti-model-bundle": 20,
-        "truelab/kotti-frontend-bundle": 20
+        "truelab/kotti-model-bundle": 15,
+        "truelab/kotti-frontend-bundle": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,
