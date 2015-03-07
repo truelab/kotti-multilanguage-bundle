@@ -39,13 +39,13 @@ class Language
     }
 
 
-    public function setLocale(ContentInterface $context)
+    public function setLocale(ContentInterface $context = null)
     {
-        $this->locale              = $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
-        $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ?
-            $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath()); // HARD TO TEST WRONG!
-        $this->languageRoot        = $this->repository->findByPath($this->getCurrentLanguageRootPath());
-        $this->translationsMap     = $this->repository->getTranslationsMap($context);
+        $this->translationsMap     = $context ? $this->repository->getTranslationsMap($context) : [];
+        $this->locale              = $context && $context->getLanguage() ? $context->getLanguage() : $this->getDefaultLocale();
+
+        $this->defaultLanguageRoot = $this->getDefaultLanguageRoot() ? $this->getDefaultLanguageRoot() : $this->repository->findByPath($this->getDefaultLanguageRootPath()); // HARD TO TEST WRONG!
+        $this->languageRoot = $this->repository->findByPath($this->getCurrentLanguageRootPath());
 
         // set locale for this session
         $this->session->set('_locale', $this->getLocale());

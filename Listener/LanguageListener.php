@@ -46,9 +46,7 @@ class LanguageListener
     {
         $context = $this->currentContext->get();
 
-        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()
-        || !$context
-        || !$context instanceof ContentInterface) {
+        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
             return;
         }
 
