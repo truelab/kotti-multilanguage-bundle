@@ -13,7 +13,7 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "truelab/kotti-model-bundle" : "1.*@alpha",
+        "truelab/kotti-model-bundle" : "dev-master",
         "truelab/kotti-frontend-bundle": "dev-master"
     },
     "require-dev": {
