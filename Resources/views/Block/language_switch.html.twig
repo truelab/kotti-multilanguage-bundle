@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav navbar-right navbar-language-switch">
         {% for language_root in language.availableLanguageRoots %}
             {% set path = kotti_path(language.translatedContext(language_root)) %}
-            <li class="{{ (language_root.language == app.request.locale or language_root.language == context.language)  ? 'active' : '' }}">
+            <li class="{{ (language_root.language == app.request.locale or ( context is defined and language_root.language == context.language ))  ? 'active' : '' }}">
                 <a href="{{ path }}">
                     {{ language_root.title }}
                 </a>
