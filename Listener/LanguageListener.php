@@ -2,6 +2,8 @@
 
 namespace Truelab\KottiMultilanguageBundle\Listener;
 
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -42,13 +44,27 @@ class LanguageListener
         $this->twig = $twig;
     }
 
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelException(GetResponseForExceptionEvent $event)
     {
-        $context = $this->currentContext->get();
-
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
             return;
         }
+
+        $this->setLocale($event);
+    }
+
+    public function onKernelRequest(GetResponseEvent $event)
+    {
+        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
+            return;
+        }
+
+        $this->setLocale($event);
+    }
+
+    protected function setLocale(KernelEvent $event)
+    {
+        $context = $this->currentContext->get();
 
         $this->language->setLocale($context);
 

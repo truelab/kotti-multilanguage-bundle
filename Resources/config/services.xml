@@ -50,6 +50,7 @@
                  <argument type="service" id="twig" />
              </call>
             <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="10" />
+            <tag name="kernel.event_listener" event="kernel.exception" method="onKernelException" />
         </service>
 
         <!-- NAVIGATION ROOT CHOOSER -->
