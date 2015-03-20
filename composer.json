@@ -13,8 +13,8 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "truelab/kotti-model-bundle" : "dev-master",
-        "truelab/kotti-frontend-bundle": "dev-master"
+        "truelab/kotti-model-bundle" : "~0.1",
+        "truelab/kotti-frontend-bundle": "~0.1"
     },
     "require-dev": {
         "symfony/symfony": "2.6.*",
